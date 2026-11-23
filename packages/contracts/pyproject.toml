@@ -1,7 +1,7 @@
 [project]
-name = "bolchaal-contracts"
+name = "voice4-contracts"
 version = "0.1.0"
-description = "Locked shared schemas between Bolchaal services"
+description = "Locked shared schemas between Voice4 services"
 requires-python = ">=3.12"
 dependencies = ["pydantic>=2.10,<3"]
 
@@ -10,4 +10,4 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/bolchaal_contracts"]
+packages = ["src/voice4_contracts"]

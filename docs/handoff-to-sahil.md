@@ -3,7 +3,7 @@
 ## 1. Setup (once)
 
 ```bash
-git clone https://github.com/sanketmuchhala/bolchaal.git && cd bolchaal
+git clone https://github.com/sanketmuchhala/voice4-core.git && cd voice4-core
 uv sync
 git config core.hooksPath scripts/hooks
 ```
@@ -22,13 +22,13 @@ git worktree add -b feat/001-eval-harness .worktrees/feat-001-eval-harness main 
 
 ```markdown
 # Objective
-You are the Builder for `services/voice-orchestrator/` and `apps/eval-harness/` in the Bolchaal repo.
+You are the Builder for `services/voice-orchestrator/` and `apps/eval-harness/` in the Voice4 repo.
 Week 1 goals:
 (a) In this worktree, build a Pipecat prototype over an Exotel AgentStream WebSocket that implements
     ONLY the turn-taking state machine in docs/specs/001-hinglish-mvp/SPEC.md section 4, with an echo LLM.
     This is a blind shootout: do not read any `proto/livekit-*` branch.
 (b) In a second worktree, build apps/eval-harness: replay 8 kHz WAV clips, measure per-turn
-    voice-to-voice latency, and emit one `bolchaal_contracts.CallEvalReport` per call.
+    voice-to-voice latency, and emit one `voice4_contracts.CallEvalReport` per call.
 
 # State
 - Branch: the one this worktree is on. Base: `main` (bootstrap commit; `git log -1 main`).

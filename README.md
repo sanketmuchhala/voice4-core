@@ -1,6 +1,6 @@
-# Bolchaal
+# voice4-core
 
-**Bolchaal** (बोलचाल, "everyday spoken conversation") is a voice agent for high-chaos contact centers. It is built for the calls that break generic voice bots: 8 kHz phone lines, background noise, callers switching between Hindi and English mid-sentence, and people who interrupt, pause to think, or say "haan" while the agent is still talking.
+**voice4-core** is the engine behind Voice4, a "Voice 4.0" agent for high-chaos contact centers. It is built for the calls that break generic voice bots: 8 kHz phone lines, background noise, callers switching between Hindi and English mid-sentence, and people who interrupt, pause to think, or say "haan" while the agent is still talking.
 
 The plan is to harden the stack on high-volume Indian telephony first, then take it to high-margin US verticals such as auto dealers, hospitality, healthcare and BFSI.
 

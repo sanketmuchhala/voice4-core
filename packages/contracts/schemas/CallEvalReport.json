@@ -1,5 +1,5 @@
 {
-  "$comment": "bolchaal-contracts 0.1.0",
+  "$comment": "voice4-contracts 0.1.0",
   "additionalProperties": false,
   "description": "Per-call scorecard produced by apps/eval-harness (see ACCEPTANCE 001).",
   "properties": {

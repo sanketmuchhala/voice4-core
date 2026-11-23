@@ -1,7 +1,7 @@
 """Export JSON Schemas for every contract model.
 
-    uv run python -m bolchaal_contracts.export          # write packages/contracts/schemas/
-    uv run python -m bolchaal_contracts.export --check  # exit 1 if committed schemas drifted
+    uv run python -m voice4_contracts.export          # write packages/contracts/schemas/
+    uv run python -m voice4_contracts.export --check  # exit 1 if committed schemas drifted
 """
 
 import argparse
@@ -36,7 +36,7 @@ def render() -> dict[str, str]:
     out: dict[str, str] = {}
     for model in MODELS:
         schema: dict[str, Any] = model.model_json_schema()
-        schema["$comment"] = f"bolchaal-contracts {CONTRACT_VERSION}"
+        schema["$comment"] = f"voice4-contracts {CONTRACT_VERSION}"
         out[f"{model.__name__}.json"] = json.dumps(schema, indent=2, sort_keys=True) + "\n"
     return out
 

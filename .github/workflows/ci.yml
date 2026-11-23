@@ -14,5 +14,5 @@ jobs:
       - run: uv run ruff check .
       - run: uv run mypy
       - run: uv run pytest
-      - run: uv run python -m bolchaal_contracts.export --check
+      - run: uv run python -m voice4_contracts.export --check
       - run: uv run python apps/eval-harness/run_eval.py --set smoke-8khz

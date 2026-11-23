@@ -6,7 +6,7 @@ Folders may have their own `AGENTS.md`. The file closest to the code wins.
 
 ## Project
 
-Bolchaal is a low-latency Hinglish voice agent for 8 kHz telephony. The v1 vertical is outbound COD order confirmation.
+Voice4 is a low-latency Hinglish voice agent for 8 kHz telephony. The v1 vertical is outbound COD order confirmation.
 Read `docs/specs/001-hinglish-mvp/SPEC.md` before changing behavior, and `docs/architecture.md` for context.
 
 ## Setup (once per clone)
@@ -23,7 +23,7 @@ cp .env.example .env                      # fill locally; never commit
 uv run pytest                                              # all tests
 uv run ruff check .                                        # lint (add --fix to autofix)
 uv run mypy                                                # strict typecheck (paths set in pyproject.toml)
-uv run python -m bolchaal_contracts.export [--check]       # (re)generate or verify contract JSON schemas
+uv run python -m voice4_contracts.export [--check]       # (re)generate or verify contract JSON schemas
 uv run python apps/eval-harness/run_eval.py --set smoke-8khz   # eval smoke test
 ```
 

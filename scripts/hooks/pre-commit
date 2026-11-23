@@ -27,5 +27,5 @@ fi
 
 # 4. Contracts drift check.
 if echo "$staged" | grep -q '^packages/contracts/'; then
-  uv run python -m bolchaal_contracts.export --check
+  uv run python -m voice4_contracts.export --check
 fi

@@ -1,5 +1,5 @@
 {
-  "$comment": "bolchaal-contracts 0.1.0",
+  "$comment": "voice4-contracts 0.1.0",
   "additionalProperties": false,
   "description": "One chunk of call audio.\n\nTelephony ingress is always 8 kHz PCMU (G.711 mu-law). Anything feeding a 16 kHz\nmodel must be explicitly resampled to `pcm16` @ 16000 first (AGENTS.md invariant 1).",
   "properties": {

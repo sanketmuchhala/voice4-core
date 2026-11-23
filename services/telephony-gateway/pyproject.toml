@@ -1,12 +1,12 @@
 [project]
-name = "bolchaal-telephony-gateway"
+name = "voice4-telephony-gateway"
 version = "0.1.0"
 description = "Carrier ingress, pre-dial TRAI/DPDP compliance guard, warm transfer"
 requires-python = ">=3.12"
-dependencies = ["bolchaal-contracts"]
+dependencies = ["voice4-contracts"]
 
 [tool.uv.sources]
-bolchaal-contracts = { workspace = true }
+voice4-contracts = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

@@ -1,4 +1,4 @@
-"""Locked contracts shared by every Bolchaal service. See packages/contracts/AGENTS.md."""
+"""Locked contracts shared by every Voice4 service. See packages/contracts/AGENTS.md."""
 
 from .audio import AudioFrame, Codec, Direction, SampleRate
 from .compliance import ComplianceCheckResult, ComplianceReason

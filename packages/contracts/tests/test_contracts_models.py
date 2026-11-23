@@ -3,7 +3,7 @@ from datetime import UTC, datetime
 import pytest
 from pydantic import BaseModel, ValidationError
 
-from bolchaal_contracts import (
+from voice4_contracts import (
     AudioFrame,
     CallEvalReport,
     ComplianceCheckResult,
@@ -13,7 +13,7 @@ from bolchaal_contracts import (
     TurnEvent,
     TurnEventType,
 )
-from bolchaal_contracts.export import render
+from voice4_contracts.export import render
 
 NOW = datetime(2026, 11, 22, 10, 0, tzinfo=UTC)
 
@@ -125,9 +125,9 @@ def test_eval_p95_not_below_p50() -> None:
 
 
 def test_committed_schemas_not_stale() -> None:
-    from bolchaal_contracts.export import SCHEMA_DIR
+    from voice4_contracts.export import SCHEMA_DIR
 
     for name, text in render().items():
         path = SCHEMA_DIR / name
-        assert path.exists(), f"{name} missing: run `uv run python -m bolchaal_contracts.export`"
+        assert path.exists(), f"{name} missing: run `uv run python -m voice4_contracts.export`"
         assert path.read_text() == text, f"{name} stale: re-run the export"

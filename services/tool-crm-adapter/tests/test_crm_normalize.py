@@ -2,8 +2,8 @@ from decimal import Decimal
 
 import pytest
 
-from bolchaal_contracts import ToolCallRequest
 from tool_crm_adapter.normalize import normalize_amount, normalize_order_id, normalize_phone_in
+from voice4_contracts import ToolCallRequest
 
 
 @pytest.mark.parametrize(

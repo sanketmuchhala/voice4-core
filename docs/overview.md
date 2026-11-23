@@ -18,7 +18,7 @@ Contact-center voice AI demos well and fails in production on real phone lines:
 
 ## Positioning
 
-Bolchaal aims for both moats:
+Voice4 aims for both moats:
 
 1. **Technical:** reliable sub-800 ms p95 voice-to-voice latency on noisy 8 kHz Hinglish calls, with correct turn-taking.
 2. **Vertical:** one narrow transactional workflow done end to end (candidates: D2C COD confirmation, logistics verification, clinic appointment booking), with a confidence-based warm transfer to a human.

@@ -14,7 +14,7 @@ from datetime import datetime, time
 from typing import Protocol
 from zoneinfo import ZoneInfo
 
-from bolchaal_contracts import ComplianceCheckResult, ComplianceReason
+from voice4_contracts import ComplianceCheckResult, ComplianceReason
 
 IST = ZoneInfo("Asia/Kolkata")
 CALL_WINDOW_START = time(9, 0)  # inclusive

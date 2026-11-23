@@ -3,8 +3,8 @@ from datetime import UTC, datetime
 
 import pytest
 
-from bolchaal_contracts import ComplianceReason as R
 from telephony_gateway.compliance import IST, DialRequest, check_trai_window_and_dnd
+from voice4_contracts import ComplianceReason as R
 
 
 class FakeDnd:

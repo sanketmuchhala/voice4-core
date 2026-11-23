@@ -1,12 +1,12 @@
 [project]
-name = "bolchaal-voice-orchestrator"
+name = "voice4-voice-orchestrator"
 version = "0.1.0"
 description = "Streaming STT -> LLM -> TTS loop with turn-taking and barge-in"
 requires-python = ">=3.12"
-dependencies = ["bolchaal-contracts"]
+dependencies = ["voice4-contracts"]
 
 [tool.uv.sources]
-bolchaal-contracts = { workspace = true }
+voice4-contracts = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

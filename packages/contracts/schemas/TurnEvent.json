@@ -1,5 +1,5 @@
 {
-  "$comment": "bolchaal-contracts 0.1.0",
+  "$comment": "voice4-contracts 0.1.0",
   "$defs": {
     "TurnEventType": {
       "enum": [

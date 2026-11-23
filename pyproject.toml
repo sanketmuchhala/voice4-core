@@ -1,13 +1,13 @@
 [project]
-name = "bolchaal"
+name = "voice4-core"
 version = "0.0.0"
-description = "Bolchaal monorepo root (virtual workspace)"
+description = "voice4-core monorepo root (virtual workspace)"
 requires-python = ">=3.12"
 dependencies = [
-    "bolchaal-contracts",
-    "bolchaal-telephony-gateway",
-    "bolchaal-tool-crm-adapter",
-    "bolchaal-voice-orchestrator",
+    "voice4-contracts",
+    "voice4-telephony-gateway",
+    "voice4-tool-crm-adapter",
+    "voice4-voice-orchestrator",
 ]
 
 [dependency-groups]
@@ -24,10 +24,10 @@ package = false
 members = ["packages/*", "services/*"]
 
 [tool.uv.sources]
-bolchaal-contracts = { workspace = true }
-bolchaal-telephony-gateway = { workspace = true }
-bolchaal-tool-crm-adapter = { workspace = true }
-bolchaal-voice-orchestrator = { workspace = true }
+voice4-contracts = { workspace = true }
+voice4-telephony-gateway = { workspace = true }
+voice4-tool-crm-adapter = { workspace = true }
+voice4-voice-orchestrator = { workspace = true }
 
 [tool.pytest.ini_options]
 testpaths = ["packages", "services", "apps"]
@@ -42,7 +42,7 @@ extend-exclude = [".worktrees"]
 select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["bolchaal_contracts", "telephony_gateway", "tool_crm_adapter", "voice_orchestrator"]
+known-first-party = ["voice4_contracts", "telephony_gateway", "tool_crm_adapter", "voice_orchestrator"]
 
 [tool.mypy]
 strict = true

@@ -1,5 +1,5 @@
 {
-  "$comment": "bolchaal-contracts 0.1.0",
+  "$comment": "voice4-contracts 0.1.0",
   "additionalProperties": false,
   "description": "LLM -> tool-crm-adapter. String args must already be Roman/ASCII-normalized\n(AGENTS.md invariant 5); Devanagari digits or script in an ID is rejected here.",
   "properties": {

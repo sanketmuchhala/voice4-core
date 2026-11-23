@@ -1,12 +1,12 @@
 [project]
-name = "bolchaal-tool-crm-adapter"
+name = "voice4-tool-crm-adapter"
 version = "0.1.0"
 description = "COD order tools and Roman-script normalization"
 requires-python = ">=3.12"
-dependencies = ["bolchaal-contracts"]
+dependencies = ["voice4-contracts"]
 
 [tool.uv.sources]
-bolchaal-contracts = { workspace = true }
+voice4-contracts = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

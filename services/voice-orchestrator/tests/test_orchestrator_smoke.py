@@ -1,5 +1,5 @@
 import voice_orchestrator
-from bolchaal_contracts import CONTRACT_VERSION, TurnEventType
+from voice4_contracts import CONTRACT_VERSION, TurnEventType
 
 
 def test_package_imports_and_sees_contracts() -> None:
