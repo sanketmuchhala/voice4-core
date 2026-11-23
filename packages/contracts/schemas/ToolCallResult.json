@@ -1,0 +1,73 @@
+{
+  "$comment": "bolchaal-contracts 0.1.0",
+  "additionalProperties": false,
+  "properties": {
+    "call_id": {
+      "minLength": 1,
+      "title": "Call Id",
+      "type": "string"
+    },
+    "data": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Data",
+      "type": "object"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error"
+    },
+    "latency_ms": {
+      "minimum": 0,
+      "title": "Latency Ms",
+      "type": "number"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "error",
+        "timeout"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "call_id",
+    "request_id",
+    "status",
+    "latency_ms"
+  ],
+  "title": "ToolCallResult",
+  "type": "object"
+}

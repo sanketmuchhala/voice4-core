@@ -1,0 +1,65 @@
+{
+  "$comment": "bolchaal-contracts 0.1.0",
+  "additionalProperties": false,
+  "description": "One chunk of call audio.\n\nTelephony ingress is always 8 kHz PCMU (G.711 mu-law). Anything feeding a 16 kHz\nmodel must be explicitly resampled to `pcm16` @ 16000 first (AGENTS.md invariant 1).",
+  "properties": {
+    "call_id": {
+      "minLength": 1,
+      "title": "Call Id",
+      "type": "string"
+    },
+    "codec": {
+      "enum": [
+        "pcmu",
+        "pcm16"
+      ],
+      "title": "Codec",
+      "type": "string"
+    },
+    "direction": {
+      "enum": [
+        "inbound",
+        "outbound"
+      ],
+      "title": "Direction",
+      "type": "string"
+    },
+    "payload": {
+      "description": "Raw audio bytes; URL-safe base64 in JSON",
+      "format": "base64url",
+      "title": "Payload",
+      "type": "string"
+    },
+    "sample_rate": {
+      "enum": [
+        8000,
+        16000
+      ],
+      "title": "Sample Rate",
+      "type": "integer"
+    },
+    "seq": {
+      "description": "Monotonic per call and direction",
+      "minimum": 0,
+      "title": "Seq",
+      "type": "integer"
+    },
+    "timestamp_ms": {
+      "description": "Monotonic call clock, ms since call start",
+      "minimum": 0,
+      "title": "Timestamp Ms",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "call_id",
+    "seq",
+    "direction",
+    "sample_rate",
+    "codec",
+    "payload",
+    "timestamp_ms"
+  ],
+  "title": "AudioFrame",
+  "type": "object"
+}

@@ -1,0 +1,97 @@
+{
+  "$comment": "bolchaal-contracts 0.1.0",
+  "additionalProperties": false,
+  "description": "Per-call scorecard produced by apps/eval-harness (see ACCEPTANCE 001).",
+  "properties": {
+    "call_id": {
+      "minLength": 1,
+      "title": "Call Id",
+      "type": "string"
+    },
+    "contract_version": {
+      "default": "0.1.0",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "false_cutoffs": {
+      "minimum": 0,
+      "title": "False Cutoffs",
+      "type": "integer"
+    },
+    "false_interrupts": {
+      "minimum": 0,
+      "title": "False Interrupts",
+      "type": "integer"
+    },
+    "handoff_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Handoff Reason"
+    },
+    "p50_turn_latency_ms": {
+      "minimum": 0,
+      "title": "P50 Turn Latency Ms",
+      "type": "number"
+    },
+    "p95_turn_latency_ms": {
+      "minimum": 0,
+      "title": "P95 Turn Latency Ms",
+      "type": "number"
+    },
+    "provenance_tagged": {
+      "description": "Synthetic agent audio carried provenance metadata",
+      "title": "Provenance Tagged",
+      "type": "boolean"
+    },
+    "repair_turns": {
+      "minimum": 0,
+      "title": "Repair Turns",
+      "type": "integer"
+    },
+    "semantic_intent_match": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Semantic Intent Match",
+      "type": "number"
+    },
+    "tool_call_accuracy": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tool Call Accuracy"
+    },
+    "turns": {
+      "minimum": 0,
+      "title": "Turns",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "call_id",
+    "turns",
+    "p50_turn_latency_ms",
+    "p95_turn_latency_ms",
+    "repair_turns",
+    "false_interrupts",
+    "false_cutoffs",
+    "semantic_intent_match",
+    "provenance_tagged"
+  ],
+  "title": "CallEvalReport",
+  "type": "object"
+}

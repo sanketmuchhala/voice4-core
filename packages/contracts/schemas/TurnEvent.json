@@ -1,0 +1,64 @@
+{
+  "$comment": "bolchaal-contracts 0.1.0",
+  "$defs": {
+    "TurnEventType": {
+      "enum": [
+        "user_speech_start",
+        "user_turn_end",
+        "backchannel",
+        "barge_in",
+        "agent_speech_start",
+        "agent_speech_end",
+        "tts_flushed",
+        "max_hold_elapsed"
+      ],
+      "title": "TurnEventType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Turn-taking state change emitted by voice-orchestrator (see SPEC 001 state machine).",
+  "properties": {
+    "call_id": {
+      "minLength": 1,
+      "title": "Call Id",
+      "type": "string"
+    },
+    "confidence": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Turn-detector probability, when applicable",
+      "title": "Confidence"
+    },
+    "timestamp_ms": {
+      "minimum": 0,
+      "title": "Timestamp Ms",
+      "type": "integer"
+    },
+    "turn_id": {
+      "minimum": 0,
+      "title": "Turn Id",
+      "type": "integer"
+    },
+    "type": {
+      "$ref": "#/$defs/TurnEventType"
+    }
+  },
+  "required": [
+    "call_id",
+    "turn_id",
+    "type",
+    "timestamp_ms"
+  ],
+  "title": "TurnEvent",
+  "type": "object"
+}

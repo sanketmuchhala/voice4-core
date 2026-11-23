@@ -1,0 +1,56 @@
+{
+  "$comment": "bolchaal-contracts 0.1.0",
+  "additionalProperties": false,
+  "description": "LLM -> tool-crm-adapter. String args must already be Roman/ASCII-normalized\n(AGENTS.md invariant 5); Devanagari digits or script in an ID is rejected here.",
+  "properties": {
+    "args": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Args",
+      "type": "object"
+    },
+    "call_id": {
+      "minLength": 1,
+      "title": "Call Id",
+      "type": "string"
+    },
+    "name": {
+      "enum": [
+        "get_order",
+        "update_order_status",
+        "transfer_to_human"
+      ],
+      "title": "Name",
+      "type": "string"
+    },
+    "request_id": {
+      "minLength": 1,
+      "title": "Request Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "call_id",
+    "request_id",
+    "name"
+  ],
+  "title": "ToolCallRequest",
+  "type": "object"
+}

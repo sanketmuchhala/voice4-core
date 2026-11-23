@@ -1,0 +1,74 @@
+{
+  "$comment": "bolchaal-contracts 0.1.0",
+  "$defs": {
+    "ComplianceReason": {
+      "enum": [
+        "outside_window",
+        "dnd_listed",
+        "dnd_lookup_failed",
+        "missing_dlt_template",
+        "invalid_header_series",
+        "no_consent"
+      ],
+      "title": "ComplianceReason",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Pre-dial verdict from telephony-gateway. `allowed` is True iff `reasons` is empty.",
+  "properties": {
+    "allowed": {
+      "title": "Allowed",
+      "type": "boolean"
+    },
+    "call_id": {
+      "minLength": 1,
+      "title": "Call Id",
+      "type": "string"
+    },
+    "checked_at": {
+      "format": "date-time",
+      "title": "Checked At",
+      "type": "string"
+    },
+    "dlt_template_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Dlt Template Id"
+    },
+    "header": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Header"
+    },
+    "reasons": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ComplianceReason"
+      },
+      "title": "Reasons",
+      "type": "array"
+    }
+  },
+  "required": [
+    "call_id",
+    "allowed",
+    "checked_at"
+  ],
+  "title": "ComplianceCheckResult",
+  "type": "object"
+}

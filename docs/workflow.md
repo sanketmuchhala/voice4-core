@@ -36,14 +36,12 @@ Both agents build against the same spec in separate worktrees. Both versions are
 
 ## Handoff packet
 
-```markdown
-# Objective
-# State        (branch, commit hash, files touched)
-# Decisions
-# Constraints
-# Acceptance   (which ACCEPTANCE.md items remain)
-# Open questions
-```
+Every PR body uses `.github/pull_request_template.md`: `# Objective`, `# State` (branch, commit, files touched), `# Decisions`, `# Constraints`, `# Acceptance` (which ACCEPTANCE ids), `# Open questions`.
+
+Ready-made prompts:
+- `docs/handoff-to-sahil.md`: Codex setup and kickoff
+- `docs/prompts/adversarial-test-author.md`: blind test writing (loop 2)
+- `docs/prompts/critic-review.md`: fresh-session PR review (loop 1, step 3)
 
 ## Worktrees
 

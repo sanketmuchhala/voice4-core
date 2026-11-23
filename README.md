@@ -14,7 +14,19 @@ The plan is to harden the stack on high-volume Indian telephony first, then take
 
 ## Status
 
-Pre-MVP. See [`docs/specs/001-hinglish-mvp/`](docs/specs/001-hinglish-mvp/) for the first milestone.
+Pre-MVP. The v1 vertical is **outbound COD order confirmation**. See [`docs/specs/001-hinglish-mvp/`](docs/specs/001-hinglish-mvp/).
+
+Done so far: locked contracts v0.1.0, the TRAI/DPDP pre-dial guard, Roman-script normalizers, CI, and the pre-commit hook.
+
+## Quick start
+
+```bash
+uv sync
+git config core.hooksPath scripts/hooks
+uv run pytest && uv run ruff check . && uv run mypy
+```
+
+Sahil: start with [`docs/handoff-to-sahil.md`](docs/handoff-to-sahil.md).
 
 ## Repo map
 
@@ -25,8 +37,10 @@ docs/
   overview.md             Problem, market, positioning
   architecture.md         The 6-layer stack
   workflow.md             How Sanket (Claude Code) and Sahil (Codex) split and review work
+  handoff-to-sahil.md     Codex setup + kickoff prompt
+  prompts/                Reusable prompts: adversarial test author, fresh critic
   specs/<NNN-feature>/    SPEC / PLAN / ACCEPTANCE / DECISIONS per feature
-packages/contracts/       Shared schemas (AudioFrame, TurnEvent, ToolCall). Lock these first.
+packages/contracts/       LOCKED pydantic schemas + JSON exports (AudioFrame, TurnEvent, ToolCall*, ...)
 services/
   telephony-gateway/      Carrier ingress (Exotel / Twilio), compliance guard, warm transfer
   voice-orchestrator/     Streaming STT -> LLM -> TTS loop, turn detection, barge-in
@@ -34,7 +48,8 @@ services/
 apps/
   eval-harness/           8 kHz call replay, latency + semantic scoring
   ops-dashboard/          Call logs, consent audit, live monitor
-scripts/hooks/            Pre-commit checks
+scripts/hooks/            Pre-commit: secret scan, ruff, mypy, contract drift
+.github/                  PR template (handoff packet) + CI
 ```
 
 ## Parallel agent worktrees
