@@ -64,3 +64,5 @@ files = [
 ]
 exclude = ["\\.worktrees/"]
 
+[tool.ruff.lint.per-file-ignores]
+"streamlit_app.py" = ["E501"]

@@ -12,12 +12,11 @@ import streamlit.components.v1 as components
 
 from voice_engine import SpeechEvidence, analyze_audio
 
-
 APP_DIR = Path(__file__).resolve().parent
 MODEL_DIR = APP_DIR / ".models"
 
 CONTEXTS = {
-    "Customer name": "Capturing the caller’s name. Exact spelling may be consequential.",
+    "Customer name": "Capturing the caller's name. Exact spelling may be consequential.",
     "Booking code": "Capturing an alphanumeric booking code. Every character is consequential.",
     "Street address": "Capturing a street address. Local spelling and pronunciation may differ.",
     "General English": "General English conversation without assuming a regional accent.",
