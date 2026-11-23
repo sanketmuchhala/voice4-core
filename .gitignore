@@ -1,8 +1,6 @@
-.env
 .venv/
+.models/
 __pycache__/
 *.pyc
-node_modules/
-.worktrees/
-.DS_Store
-recordings/
+.streamlit/secrets.toml
+

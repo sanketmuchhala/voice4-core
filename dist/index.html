@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Voice 4.0 interactive phonetic-agent demonstration for noisy contact-center calls."
+    />
+    <title>Voice 4.0 — Phonetic Agent Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Voice 4.0 home">
+        <span class="brand-mark">V4</span>
+        <span>VOICE / SIGNAL LAB</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#demo">Live demo</a>
+        <a href="#architecture">Architecture</a>
+      </nav>
+      <span class="status"><i></i> Prototype online</span>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow">CONTACT-CENTER INTELLIGENCE / MVP 01</div>
+        <h1>Text is a summary.<br /><em>Speech is the evidence.</em></h1>
+        <div class="hero-bottom">
+          <p>
+            Speak naturally in English. Voice 4.0 retains the captured audio and recognition
+            alternatives, then uses task context to clarify only what matters.
+          </p>
+          <a class="primary-link" href="#demo">Open the signal console</a>
+        </div>
+      </section>
+
+      <section class="demo-shell" id="demo" aria-labelledby="demo-title">
+        <div class="section-heading">
+          <div>
+            <span class="kicker">INTERACTIVE DEMONSTRATION</span>
+            <h2 id="demo-title">Your voice. More than one hypothesis.</h2>
+          </div>
+          <p>Choose the task, select an English profile, and speak using your natural accent.</p>
+        </div>
+
+        <div class="scenario-tabs" role="tablist" aria-label="Conversation task">
+          <button class="scenario-tab active" data-context="name" role="tab" aria-selected="true">
+            Customer name
+          </button>
+          <button class="scenario-tab" data-context="booking" role="tab" aria-selected="false">
+            Booking code
+          </button>
+          <button class="scenario-tab" data-context="address" role="tab" aria-selected="false">
+            Street address
+          </button>
+          <button class="scenario-tab" data-context="general" role="tab" aria-selected="false">
+            General English
+          </button>
+        </div>
+
+        <div class="signal-console">
+          <div class="console-topbar">
+            <div>
+              <span class="mono-label">LIVE MICROPHONE</span>
+              <strong id="captureStatus">READY TO LISTEN</strong>
+            </div>
+            <div class="language-control">
+              <label for="accentProfile">English profile</label>
+              <select id="accentProfile">
+                <option value="en" selected>Auto / broad English</option>
+                <option value="en-IN">Indian English</option>
+                <option value="en-GB">British English</option>
+                <option value="en-US">American English</option>
+                <option value="en-AU">Australian English</option>
+                <option value="en-NZ">New Zealand English</option>
+                <option value="en-ZA">South African English</option>
+                <option value="en-NG">Nigerian English</option>
+                <option value="en-KE">Kenyan English</option>
+                <option value="en-SG">Singapore English</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="audio-strip">
+            <button class="play-button mic-button" id="recordButton" aria-label="Start microphone capture">
+              <span class="mic-icon"></span>
+            </button>
+            <div class="waveform" id="waveform" aria-label="Audio waveform visualization"></div>
+            <div class="audio-copy">
+              <span id="listeningLabel">YOUR SPEECH</span>
+              <strong id="liveTranscript">Press the microphone and speak naturally.</strong>
+            </div>
+            <div class="capture-actions">
+              <button class="playback-button" id="playCapture" disabled>Play capture</button>
+              <button class="run-button" id="runAnalysis" disabled>Run evidence pass</button>
+            </div>
+          </div>
+
+          <div class="browser-note" id="browserNote">
+            Live recognition depends on browser support. Your browser may use its speech service to process audio.
+          </div>
+
+          <div class="pipeline-grid">
+            <article class="stage-card transcript-card" id="transcriptStage">
+              <header>
+                <span class="stage-number">01</span>
+                <div>
+                  <span class="mono-label">CONVENTIONAL STT</span>
+                  <h3>Transcript only</h3>
+                </div>
+                <span class="stage-state" id="transcriptState">READY</span>
+              </header>
+              <div class="stage-content">
+                <p class="transcript" id="transcriptText">Your live transcript will appear here.</p>
+                <div class="confidence-line">
+                  <span>Token confidence</span>
+                  <div class="confidence-track"><i id="sttConfidence"></i></div>
+                  <strong id="sttConfidenceLabel">—</strong>
+                </div>
+                <p class="loss-note">A transcript alone hides competing interpretations and the original acoustic signal.</p>
+              </div>
+            </article>
+
+            <article class="stage-card evidence-card" id="evidenceStage">
+              <header>
+                <span class="stage-number">02</span>
+                <div>
+                  <span class="mono-label">RETAINED SIGNAL</span>
+                  <h3>Evidence bundle</h3>
+                </div>
+                <span class="stage-state" id="evidenceState">WAITING</span>
+              </header>
+              <div class="stage-content">
+                <div class="evidence-row">
+                  <span>Captured signal</span>
+                  <strong class="phonemes" id="signalEvidence">Waiting for microphone input</strong>
+                </div>
+                <div class="candidate-list" id="candidateList"></div>
+                <div class="context-note">
+                  <span>CONTEXT</span>
+                  <p id="contextText">Capturing the caller’s name. Exact spelling may be consequential.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage-card decision-card" id="decisionStage">
+              <header>
+                <span class="stage-number">03</span>
+                <div>
+                  <span class="mono-label">UNIFIED AGENT</span>
+                  <h3>Resolve or clarify</h3>
+                </div>
+                <span class="stage-state" id="decisionState">WAITING</span>
+              </header>
+              <div class="stage-content">
+                <span class="decision-label">AGENT RESPONSE</span>
+                <blockquote id="agentResponse">
+                  Speak first, then run the evidence pass.
+                </blockquote>
+                <div class="decision-actions" id="decisionActions"></div>
+                <button class="speak-button" id="speakAgent" disabled>Play agent response</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="outcome-grid">
+          <article class="outcome old-way">
+            <span class="comparison-label">VOICE 3.0 / TEXT ONLY</span>
+            <strong id="oldOutcome">Only the top transcript is accepted.</strong>
+            <p>Fast, but competing interpretations are discarded.</p>
+          </article>
+          <article class="outcome new-way">
+            <span class="comparison-label">VOICE 4.0 / EVIDENCE AWARE</span>
+            <strong id="newOutcome">Audio and alternate hypotheses are retained.</strong>
+            <p>The agent can confirm uncertainty before committing a critical value.</p>
+          </article>
+        </div>
+        <p class="disclaimer">Live browser-recognition MVP. Production phonemes and accent robustness require a dedicated speech-model backend.</p>
+      </section>
+
+      <section class="architecture" id="architecture" aria-labelledby="architecture-title">
+        <div class="section-heading light-heading">
+          <div>
+            <span class="kicker">PROPOSED MVP ARCHITECTURE</span>
+            <h2 id="architecture-title">Preserve first. Reason second.</h2>
+          </div>
+          <p>The transcript stays useful. It simply stops being the only source of truth.</p>
+        </div>
+        <div class="architecture-flow">
+          <article>
+            <span>01 / CAPTURE</span>
+            <h3>Raw audio buffer</h3>
+            <p>Retain short, timestamped clips around uncertain or business-critical speech.</p>
+          </article>
+          <article>
+            <span>02 / EXTRACT</span>
+            <h3>Parallel evidence</h3>
+            <p>Produce transcript confidence, phonemes, timing, acoustic cues, and candidates.</p>
+          </article>
+          <article>
+            <span>03 / RESOLVE</span>
+            <h3>Contextual agent</h3>
+            <p>Combine the evidence with the task and conversation state before committing.</p>
+          </article>
+          <article>
+            <span>04 / RESPOND</span>
+            <h3>Targeted clarification</h3>
+            <p>Ask one natural question only when the uncertainty can change the outcome.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span class="brand-mark">V4</span>
+      <p>VOICE 4.0 / UNIFIED PHONETIC AGENT</p>
+      <p>MVP CONCEPT · 2026</p>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
